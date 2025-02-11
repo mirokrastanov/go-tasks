@@ -52,6 +52,9 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/api/todos", getAllTodos)
+	app.Post("/api/todos", createTodo)
+	// app.Patch("/api/todos/:id", updateTodo)
+	// app.Delete("/api/todos/:id", deleteTodo)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -83,3 +86,28 @@ func getAllTodos(c *fiber.Ctx) error {
 
 	return c.JSON(todos)
 }
+
+func createTodo(c *fiber.Ctx) error {
+	todo := new(Todo)
+
+	err := c.BodyParser(todo)
+	if err != nil {
+		return err
+	}
+
+	if todo.Body == "" {
+		return c.Status(400).JSON(fiber.Map{"error": "Todo body is required"})
+	}
+
+	insertResult, err := collection.InsertOne(context.Background(), todo)
+	if err != nil {
+		return err
+	}
+
+	todo.ID = insertResult.InsertedID.(primitive.ObjectID)
+
+	return c.Status(201).JSON(todo)
+}
+
+// func updateTodo(c *fiber.Ctx) error {}
+// func deleteTodo(c *fiber.Ctx) error {}
