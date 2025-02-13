@@ -8,7 +8,7 @@ function App() {
     <Stack h="100vh">
       <Navbar />
       <Container>
-        
+        <TodoForm />
       </Container>
     </Stack>
   )
