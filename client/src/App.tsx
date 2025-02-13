@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar"
 import TodoForm from "./components/TodoForm"
 import TodoList from "./components/TodoList"
 
+export const BACKEND_URL = import.meta.env.VITE_BE_URL; //client folder .env
+
 function App() {
 
   return (
