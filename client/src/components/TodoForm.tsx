@@ -12,6 +12,7 @@ const TodoForm = () => {
 		mutationKey: ['createTodo'],
 		mutationFn: async (e: React.FormEvent) => {
 			e.preventDefault();
+			if (newTodo == '') return alert('Input cannot be empty');
 
 			await new Promise(resolve => setTimeout(resolve, 500)); //sim loading delay
 
