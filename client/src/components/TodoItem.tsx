@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Spinner, Text } from "@chakra-ui/react";
+import { Badge, Box, Flex, Spinner, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Todo } from "./TodoList";
@@ -7,6 +7,7 @@ import { BACKEND_URL } from "../App";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
 	const queryClient = useQueryClient();
+	const { colorMode, toggleColorMode } = useColorMode();
 
 	const { mutate: updateTodo, isPending: isUpdating } = useMutation({
 		mutationKey: ['updateTodo'],
@@ -67,6 +68,7 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
 				p={2}
 				borderRadius={"lg"}
 				justifyContent={"space-between"}
+				bg={useColorModeValue("gray.400", "gray.700")}
 			>
 				<Text
 					color={todo.completed ? "green.200" : "yellow.100"}

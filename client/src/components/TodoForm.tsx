@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Spinner } from "@chakra-ui/react";
+import { Button, Flex, Input, Spinner, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
@@ -6,8 +6,8 @@ import { BACKEND_URL } from "../App";
 
 const TodoForm = () => {
 	const [newTodo, setNewTodo] = useState("");
-	const [isPending, setIsPending] = useState(false);
 	const queryClient = useQueryClient();
+	const { colorMode, toggleColorMode } = useColorMode();
 
 	const { mutate: createTodo, isPending: isCreating } = useMutation({
 		mutationKey: ['createTodo'],
@@ -44,6 +44,7 @@ const TodoForm = () => {
 		<form onSubmit={createTodo}>
 			<Flex gap={2}>
 				<Input
+					bg={useColorModeValue("gray.100", "gray.700")}
 					type='text'
 					value={newTodo}
 					onChange={(e) => setNewTodo(e.target.value)}
