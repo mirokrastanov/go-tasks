@@ -26,7 +26,7 @@ func main() {
 	fmt.Println("Service starting...")
 
 	// Load .env during development
-	if os.Getenv("MODE") != "production" {
+	if os.Getenv("ENV") != "production" {
 		err := godotenv.Load(".env")
 		if err != nil {
 			log.Fatal("Error loading.env file:", err)
@@ -73,7 +73,7 @@ func main() {
 		port = "4000"
 	}
 
-	if os.Getenv("MODE") == "production" {
+	if os.Getenv("ENV") == "production" {
 		app.Static("/", "./client/dist")
 	}
 

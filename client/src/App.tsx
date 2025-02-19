@@ -4,8 +4,11 @@ import TodoForm from "./components/TodoForm"
 import TodoList from "./components/TodoList"
 
 export const BACKEND_URL = import.meta.env.MODE === "development"
-  ? import.meta.env.BE_DEV
-  : import.meta.env.BE_PROD;
+  ? import.meta.env.VITE_BE_DEV
+  : import.meta.env.VITE_BE_PROD;
+
+// console.log(import.meta.env.MODE, import.meta.env.VITE_BE_DEV, import.meta.env.VITE_BE_PROD, BACKEND_URL);
+
 
 function App() {
 
