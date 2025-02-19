@@ -2,7 +2,7 @@
 🚀🖥️🛠️ Building my first GO project! ✨ 
 
 <p align="center">
-    <img src="https://github.com/mirokrastanov/go-tasks/blob/main/todo-preview.png?raw=true" alt="img-banner" height="420px">
+    <img src="https://github.com/mirokrastanov/go-tasks/blob/main/todo-preview.png?raw=true" alt="img-banner">
 </p>
 
 ## Description
