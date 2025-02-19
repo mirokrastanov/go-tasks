@@ -3,7 +3,9 @@ import Navbar from "./components/Navbar"
 import TodoForm from "./components/TodoForm"
 import TodoList from "./components/TodoList"
 
-export const BACKEND_URL = import.meta.env.VITE_BE_URL; //client folder .env
+export const BACKEND_URL = import.meta.env.MODE === "development"
+  ? import.meta.env.BE_DEV
+  : import.meta.env.BE_PROD;
 
 function App() {
 
